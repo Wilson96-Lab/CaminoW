@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"> <!--Para que involucre signos como tildes, etc-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caminos del Sol</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #F4EEA9;
+
+                /*Fondo con logo*/
+
+            background-image: url('imagenes/LogoCS.png'); /* Cambia aquí la ruta */
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed; /* Esto hace que sea fija */
+        }
+
+        /* Header */
+        header {
+            font-family: "Merriweather Sans", sans-serif;
+            background-color: #519259;
+            
+            height: 100px;
+            color: white;
+            padding: 20px 0; /*los dos valores son el top y el right, se puede colocar abajo e izquierda */
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        nav { /* Etiqueta de navegacion*/
+            margin-top: 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none; /* Quita la linea que viene por defecto*/
+            margin: 0 15px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #00aced;
+        }
+
+        /* Título principal de la página */
+        .titulo-pagina {
+            margin: 30px 0;
+            text-align: center;
+            color: #333;
+        }
+
+        /* Contenedor de las ciudades */
+        .contenedor {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            padding: 0 20px;
+        }
+
+        .caja {
+            width: 280px;
+            height: 400px;
+            background-color: #F0BB62;
+            padding: 10px;
+            border: 2px solid #519259;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        .caja img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .descripcion {
+            font-size: 14px;
+            color: #555;
+            padding: 5px;
+        }
+
+        /* Footer, es el pie de pagina */
+        footer {
+            background-color: #064635;
+            color: white;
+            padding: 20px;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .redes-sociales {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 10px;
+        }
+
+        .redes-sociales a {
+            color: white;
+            font-size: 20px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .redes-sociales a:hover {
+            color: #00aced;
+        }
+
+        /* Codigo CSS para la primera seccion Quienes Somos aportado por Arley*/
+
+         /* Imagen de fondo estática y cubriendo todo */
+         background-image: url('imagenes/tu-imagen-aqui.jpg'); /* Cambia aquí la ruta */
+          background-repeat: no-repeat;
+          background-size: cover;
+         background-position: center center;
+          background-attachment: fixed; /* Esto hace que sea fija */
+  
+  
+
+        /* Contenedor principal */
+        .about-section {
+          background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco con transparencia */
+          backdrop-filter: blur(4px);
+         border-radius: 8px;
+         margin: 40px auto;
+          padding: 60px 20px;
+         max-width: 1000px;
+          box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        /* Contenedor interno */
+        .about-section .container {
+         max-width: 900px;
+          margin: 0 auto;
+          text-align: center;
+        }
+
+        /* Títulos */
+        .about-section h2 {
+          font-size: 2.5em;
+          margin-bottom: 10px;
+         color: #2c3e50;
+        }
+
+        /* Introducción */
+        .about-section .intro {
+         font-size: 1.1em;
+          margin-bottom: 40px;
+         color: #555;
+        }
+
+        /* Cajas horizontales */
+        .content-boxes {
+          display: flex;
+          flex-wrap: nowrap;
+          gap: 30px;
+          justify-content: center;
+        }
+
+        /* Responsive para móviles: apilar cajas */
+        @media (max-width: 700px) {
+          .content-boxes {
+            flex-wrap: wrap;
+          }
+        }
+
+        /* Estilo de las cajas */
+        .box {
+         background-color: #F0BB62;
+          border-radius: 10px;
+          padding: 30px;
+          width: 100%;
+          max-width: 400px;
+          box-shadow: 0 0 15px rgba(0,0,0,0.1);
+          transition: 
+           transform 0.3s ease,
+           background-color 0.3s ease,
+            box-shadow 0.3s ease;
+          cursor: pointer;
+        }
+
+        /* Hover dinámico */
+        .box:hover {
+          transform: translateY(-10px);
+          background 
+        }
+
+        /*Finaliza el codigo aportado por Arley*/
+
+    </style>
+
+        <!-- Requerimientos caja quienes somos proporcionado por Arley-->
+         <meta charset="UTF-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+         <title>Caminos del Sol | Misión y Visión</title>
+          <link rel="stylesheet" href="style.css" />
+
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <h1>Caminos del Sol</h1>
+        <nav>
+            <a href="#">Inicio</a>
+            <a href="#">Viaje</a>
+            <a href="#">Destinos</a>
+            <a href="#">Voluntariados</a>
+            
+        </nav>
+    </header>
+
+    <!--Primera seccion Quienes somos-->
+
+    <h2 class="titulo-pagina">¿Quienes somos?</h2>
+
+    <section class="about-section">
+        <div class="container">
+            <h2>Quiénes Somos</h2>
+            <p class="intro">
+                Caminos del sol es una empresa de viajes ubicada en la ciudad de Medellín que brinda planes turísticos a la ciudad de Cusco en Perú, pero su misión no termina ahí pues en alianza con el gobierno nacional busca brindar soluciones a problemáticas socioambientales con el fin de poder alcanzar los objetivos de desarrollo sostenible establecidos en la ONU y que se espera que en el 2030 sean cumplidos.
+            </p>
+
+            <div class="content-boxes">
+                <div class="box">
+                  <h3>Misión</h3>
+                  <p>
+                   Brindar a nuestros viajeros experiencias inolvidables hacia Cusco, Perú, promoviendo un turismo responsable que respete las culturas locales y proteja el medio ambiente. Caminos del Sol trabaja en alianza con actores sociales y gubernamentales para generar un impacto positivo que contribuya al logro de los Objetivos de Desarrollo Sostenible.
+                  </p>
+                </div>
+             <div class="box">
+             <h3>Visión</h3>
+              <p>
+               Ser en 2030 una agencia líder en Colombia en turismo sostenible hacia Latinoamérica, reconocida por su compromiso con el medio ambiente, la inclusión social y el impulso al desarrollo comunitario a través del viaje consciente.
+                </p>
+            </div>
+      </div>
+    </div>
+  </section>
+
+     
+    <!--Segunda parte Ciudad Cusco-->
+
+        <h2 class="titulo-pagina">Cusco</h2>
+
+    <!--Tercera parte Problematica-->
+
+        <h2 class="titulo-pagina">Comprometidos con la Tierra: Enfrentando la Deforestación en Cusco</h2>
+
+    <!--Cuarta parte Lugares a visitar, planes y costos-->
+
+        <h2 class="titulo-pagina">Lugares Turisticos</h2>
+    </div>
+    <!-- GALERÍA DE CIUDADES -->
+    <div class="contenedor">
+        <div class="caja">
+            <img src="https://img.static-af.com/transform/99d85701-e295-4ab7-b84b-6c8b38bdaaf0/?io=transform:fill,width:960,height:480&consumerid=bwp" alt="París">
+            <div class="descripcion">
+                <strong>París, Francia</strong><br>
+                La Ciudad de la Luz, famosa por su elegancia y romance, ofrece monumentos emblemáticos como la Torre Eiffel y el Museo del Louvre.
+            </div>
+        </div>
+        <div class="caja">
+            <img src="https://blog.viajemos.com/wp-content/uploads/2023/06/Que-hacer-un-dia-en-New-York-Times-Square-1024x622.jpg.webp" alt="Nueva York">
+            <div class="descripcion">
+                <strong>Nueva York, EE.UU.</strong><br>
+                La Gran Manzana, un crisol de culturas, destaca por su vibrante vida urbana y monumentos como la Estatua de la Libertad.
+            </div>
+        </div>
+        <div class="caja">
+            <img src="https://viajes.nationalgeographic.com.es/medio/2024/09/03/tokio_133ce43a_1284581217_240903122054_1280x854.jpg" alt="Tokio">
+            <div class="descripcion">
+                <strong>Tokio, Japón</strong><br>
+                Una metrópoli que fusiona tradición y modernidad, con templos antiguos y rascacielos futuristas.
+            </div>
+        </div>
+        <div class="caja">
+            <img src="https://www.downunderendeavours.com/wp-content/uploads/2019/05/sydney-things-to-do-800x500-Sydney-Opera-House-8.jpg" alt="Sídney">
+            <div class="descripcion">
+                <strong>Sídney, Australia</strong><br>
+                Conocida por su icónica Ópera y hermosos puertos, Sídney es un destino turístico de renombre mundial.
+            </div>
+        </div>
+    </div>
+
+    <!--Quinta parte Rutas, costos y opciones-->
+
+    <h2 class="titulo-pagina">Rutas</h2>
+
+    <!--Sexta parte Voluntariado-->
+
+    <h2 class="titulo-pagina">Compromiso Ambiental de Caminos del Sol: Turismo con Propósito en Cusco, Perú</h2>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>Agencia de Viajes "Caminos del Sol" &copy; 2025</p>
+        <div class="redes-sociales">
+            <a href="https://www.facebook.com/CaminosdelSol" target="_blank">
+                <i class="fab fa-facebook-square"></i>
+            </a>
+            <a href="https://www.instagram.com/CaminosdelSol" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.twitter.com/CaminosdelSol" target="_blank">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.youtube.com/c/CaminosdelSol" target="_blank">
+                <i class="fab fa-youtube"></i>
+            </a>
+        </div>
+    </footer>
+
+   
+
+</body>
+</html>

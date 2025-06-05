@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exploradores Globales - Medellín</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap">
+    <style>
+        :root {
+            --primary: #2E86AB;
+            --secondary: #F18F01;
+            --dark: #333;
+            --light: #f8f9fa;
+            --success: #28a745;
+            --danger: #dc3545;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #fff;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1580234811497-9df7fd2f357e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        nav {
+            background-color: var(--primary);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 15px 0;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+        
+        /* Secciones generales */
+        section {
+            padding: 60px 0;
+        }
+        
+        section:nth-child(even) {
+            background-color: var(--light);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--primary);
+        }
+        
+        /* Planificador de Viaje */
+        .travel-plan {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .travel-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .travel-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .travel-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .travel-card-content {
+            padding: 20px;
+        }
+        
+        /* Itinerario */
+        .itinerary {
+            margin-top: 40px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        
+        /* Dashboard */
+        .dashboard {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-top: 40px;
+        }
+        
+        .chart-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .chart {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .chart-title {
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        /* Formulario */
+        .quiz-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+        
+        button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #1a6a8a;
+        }
+        
+        /* Resultado */
+        .result {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 8px;
+            display: none;
+        }
+        
+        .result h3 {
+            margin-bottom: 15px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 60px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 5px 0;
+            }
+            
+            .chart-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Exploradores Globales</h1>
+            <p>Descubre Medellín: innovación, cultura y transformación social</p>
+        </div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#planificador">Planificador</a></li>
+            <li><a href="#itinerario">Itinerario</a></li>
+            <li><a href="#problematica">Problemática</a></li>
+            <li><a href="#dashboard">Dashboard</a></li>
+        </ul>
+    </nav>
+    
+    <section id="inicio">
+        <div class="container">
+            <h2 class="section-title">Bienvenido a Medellín</h2>
+            <p>Medellín, conocida como la "Ciudad de la Eterna Primavera", es un destino que combina innovación, cultura y transformación social. Desde su espectacular geografía montañosa hasta su vibrante escena cultural y tecnológica, Medellín ofrece una experiencia única en Sudamérica.</p>
+            
+            <div class="travel-plan">
+                <div class="travel-card">
+                    <img src="https://images.unsplash.com/photo-1516467508483-a7212febe31a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Medellín">
+                    <div class="travel-card-content">
+                        <h3>Clima</h3>
+                        <p>Temperatura promedio: 22°C (72°F) durante todo el año, con una agradable brisa que le ha valido el apodo de "Ciudad de la Eterna Primavera".</p>
+                    </div>
+                </div>
+                
+                <div class="travel-card">
+                    <img src="https://images.unsplash.com/photo-1580234811497-9df7fd2f357e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Cultura">
+                    <div class="travel-card-content">
+                        <h3>Cultura</h3>
+                        <p>Conocida por su arte callejero, festivales de música y flores, y una escena gastronómica en auge que combina tradición e innovación.</p>
+                    </div>
+                </div>
+                
+                <div class="travel-card">
+                    <img src="https://images.unsplash.com/photo-1572025442646-866d16c84a54?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Transporte">
+                    <div class="travel-card-content">
+                        <h3>Transporte</h3>
+                        <p>Sistema integrado que incluye metro, metro cable, buses y tranvía, considerado uno de los más eficientes de Latinoamérica.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="planificador">
+        <div class="container">
+            <h2 class="section-title">Planificador de Viaje</h2>
+            
+            <h3>Requisitos de entrada</h3>
+            <ul>
+                <li>Pasaporte válido (no se requiere visa para estancias menores a 90 días para la mayoría de países)</li>
+                <li>Vacuna contra la fiebre amarilla recomendada (especialmente si visita zonas rurales)</li>
+                <li>Seguro médico recomendado</li>
+            </ul>
+            
+            <h3>Atracciones principales</h3>
+            <div class="travel-plan">
+                <div class="travel-card">
+                    <img src="https://images.unsplash.com/photo-1572025442646-866d16c84a54?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Comuna 13">
+                    <div class="travel-card-content">
+                        <h4>Comuna 13</h4>
+                        <p><strong>Ubicación:</strong> Noroccidente de Medellín</p>
+                        <p><strong>Costo:</strong> Tours desde $20 USD</p>
+                        <p>Antiguo barrio conflictivo transformado en un museo al aire libre con grafitis y escaleras eléctricas que conectan las laderas.</p>
+                    </div>
+                </div>
+                
+                <div class="travel-card">
+                    <img src="https://images.unsplash.com/photo-1516467508483-a7212febe31a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Jardín Botánico">
+                    <div class="travel-card-content">
+                        <h4>Jardín Botánico</h4>
+                        <p><strong>Ubicación:</strong> Zona norte de la ciudad</p>
+                        <p><strong>Costo:</strong> Entrada gratuita</p>
+                        <p>14 hectáreas de jardines con más de 1,000 especies de plantas y el famoso Orquideorama.</p>
+                    </div>
+                </div>
+                
+                <div class="travel-card">
+                    <img src="https://images.unsplash.com/photo-1580234811497-9df7fd2f357e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Pueblito Paisa">
+                    <div class="travel-card-content">
+                        <h4>Pueblito Paisa</h4>
+                        <p><strong>Ubicación:</strong> Cerro Nutibara</p>
+                        <p><strong>Costo:</strong> Entrada gratuita</p>
+                        <p>Recreación de un pueblo tradicional antioqueño con vista panorámica de la ciudad.</p>
+                    </div>
+                </div>
+                
+                <div class="travel-card">
+                    <img src="https://images.unsplash.com/photo-1572025442646-866d16c84a54?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Parque Explora">
+                    <div class="travel-card-content">
+                        <h4>Parque Explora</h4>
+                        <p><strong>Ubicación:</strong> Zona norte</p>
+                        <p><strong>Costo:</strong> $10 USD adultos, $6 USD niños</p>
+                        <p>Museo interactivo de ciencia y tecnología con acuario y planetario.</p>
+                    </div>
+                </div>
+                
+                <div class="travel-card">
+                    <img src="https://images.unsplash.com/photo-1516467508483-a7212febe31a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Museo de Antioquia">
+                    <div class="travel-card-content">
+                        <h4>Museo de Antioquia</h4>
+                        <p><strong>Ubicación:</strong> Centro de Medellín</p>
+                        <p><strong>Costo:</strong> $5 USD</p>
+                        <p>Alberga una importante colección de obras de Fernando Botero y arte colombiano.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="itinerario">
+        <div class="container">
+            <h2 class="section-title">Itinerario recomendado (5 días)</h2>
+            
+            <div class="itinerary">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Día</th>
+                            <th>Actividades</th>
+                            <th>Horarios</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Llegada al hotel, recorrido por el Parque Lleras y cena en Provenza</td>
+                            <td>3:00 p.m. - 9:00 p.m.</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Tour por el centro histórico (Plaza Botero, Museo de Antioquia), almuerzo típico y visita al Pueblito Paisa</td>
+                            <td>9:00 a.m. - 7:00 p.m.</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Comuna 13 (mañana), Jardín Botánico (tarde) y show de luces en el Parque de los Pies Descalzos</td>
+                            <td>8:00 a.m. - 9:00 p.m.</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Excursión a Guatapé y Piedra del Peñol (todo el día)</td>
+                            <td>7:00 a.m. - 8:00 p.m.</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Parque Explora y Planetario (mañana), compras en El Tesoro (tarde)</td>
+                            <td>9:00 a.m. - 6:00 p.m.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3 style="margin-top: 30px;">Presupuesto estimado</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Concepto</th>
+                            <th>Costo (USD)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Vuelo internacional promedio</td>
+                            <td>600</td>
+                        </tr>
+                        <tr>
+                            <td>Hotel (5 noches, 3 estrellas)</td>
+                            <td>250</td>
+                        </tr>
+                        <tr>
+                            <td>Comida (5 días)</td>
+                            <td>150</td>
+                        </tr>
+                        <tr>
+                            <td>Atracciones y tours</td>
+                            <td>120</td>
+                        </tr>
+                        <tr>
+                            <td>Transporte local</td>
+                            <td>30</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Total</strong></td>
+                            <td><strong>1,150</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    
+    <section id="problematica">
+        <div class="container">
+            <h2 class="section-title">Problemática y Solución Innovadora</h2>
+            
+            <h3>Movilidad sostenible en zonas de ladera</h3>
+            <p>Medellín, por su geografía montañosa, enfrenta desafíos en movilidad en los barrios ubicados en las laderas de la ciudad. Aunque el MetroCable ha sido una solución innovadora, aún existen áreas con acceso limitado a transporte público eficiente.</p>
+            
+            <h4>¿A quién afecta?</h4>
+            <p>Principalmente a los residentes de barrios populares en las laderas, que deben invertir mucho tiempo y dinero en desplazamientos, limitando sus oportunidades laborales y educativas.</p>
+            
+            <h4>Relación con ODS</h4>
+            <p>Esta problemática se relaciona con el <strong>ODS 11: Ciudades y comunidades sostenibles</strong>, específicamente con la meta 11.2 que busca proporcionar acceso a sistemas de transporte seguros, asequibles, accesibles y sostenibles para todos.</p>
+            
+            <h3>Solución propuesta: Red integrada de movilidad eléctrica</h3>
+            <p>Nuestra propuesta consiste en expandir la red de MetroCable con nuevas líneas estratégicas y complementarla con una flota de vehículos eléctricos compartidos (e-bikes y e-scooters) en estaciones intermedias, todo integrado en el mismo sistema de pago del Metro.</p>
+            
+            <div style="margin-top: 30px; text-align: center;">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/9X-5fKzmy38" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+    
+    <section id="dashboard">
+        <div class="container">
+            <h2 class="section-title">Dashboard: Ecosistema Emprendedor en Medellín</h2>
+            
+            <div class="dashboard">
+                <p>Medellín ha sido reconocida como una de las ciudades más innovadoras del mundo, con un ecosistema emprendedor en constante crecimiento. A continuación presentamos datos clave sobre el emprendimiento en la ciudad:</p>
+                
+                <div class="chart-container">
+                    <div class="chart">
+                        <h3 class="chart-title">Emprendimientos por sector (2024)</h3>
+                        <canvas id="barChart" width="400" height="300"></canvas>
+                        <p style="margin-top: 15px; font-size: 0.9em; color: #666;"><strong>Dato destacado:</strong> Los sectores de tecnología y servicios han crecido un 35% en los últimos 3 años.</p>
+                    </div>
+                    
+                    <div class="chart">
+                        <h3 class="chart-title">Participación por género</h3>
+                        <canvas id="pieChart" width="400" height="300"></canvas>
+                        <p style="margin-top: 15px; font-size: 0.9em; color: #666;"><strong>Dato destacado:</strong> Medellín tiene una de las tasas más altas de emprendimiento femenino en Latinoamérica.</p>
+                    </div>
+                    
+                    <div class="chart">
+                        <h3 class="chart-title">Tendencia de innovación (2015-2024)</h3>
+                        <canvas id="lineChart" width="400" height="300"></canvas>
+                        <p style="margin-top: 15px; font-size: 0.9em; color: #666;"><strong>Dato destacado:</strong> El crecimiento se aceleró después de 2016 con la creación de Ruta N.</p>
+                    </div>
+                    
+                    <div class="chart">
+                        <h3 class="chart-title">Emprendimientos sociales vs tradicionales</h3>
+                        <canvas id="areaChart" width="400" height="300"></canvas>
+                        <p style="margin-top: 15px; font-size: 0.9em; color: #666;"><strong>Dato destacado:</strong> Los emprendimientos sociales han crecido un 120% desde 2020, alineados con ODS 11.</p>
+                    </div>
+                </div>
+                
+                <div class="quiz-form">
+                    <h3 style="text-align: center; margin-bottom: 20px;">¿Qué tan emprendedor eres tú?</h3>
+                    
+                    <form id="entrepreneurQuiz">
+                        <div class="form-group">
+                            <label>1. Cuando enfrentas un problema, ¿qué haces?</label>
+                            <div>
+                                <input type="radio" name="q1" value="1" id="q1a1"> <label for="q1a1" style="display: inline;">Busco ayuda inmediata</label><br>
+                                <input type="radio" name="q1" value="2" id="q1a2"> <label for="q1a2" style="display: inline;">Analizo posibles soluciones</label><br>
+                                <input type="radio" name="q1" value="3" id="q1a3"> <label for="q1a3" style="display: inline;">Diseño una solución innovadora</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>2. ¿Cómo manejas el riesgo?</label>
+                            <div>
+                                <input type="radio" name="q2" value="1" id="q2a1"> <label for="q2a1" style="display: inline;">Lo evito siempre que puedo</label><br>
+                                <input type="radio" name="q2" value="2" id="q2a2"> <label for="q2a2" style="display: inline;">Lo asumo cuando es calculado</label><br>
+                                <input type="radio" name="q2" value="3" id="q2a3"> <label for="q2a3" style="display: inline;">Lo veo como una oportunidad</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>3. ¿Qué te motiva más?</label>
+                            <div>
+                                <input type="radio" name="q3" value="1" id="q3a1"> <label for="q3a1" style="display: inline;">Estabilidad y seguridad</label><br>
+                                <input type="radio" name="q3" value="2" id="q3a2"> <label for="q3a2" style="display: inline;">Crecimiento profesional</label><br>
+                                <input type="radio" name="q3" value="3" id="q3a3"> <label for="q3a3" style="display: inline;">Crear algo nuevo e impactar</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>4. ¿Cómo describes tu red de contactos?</label>
+                            <div>
+                                <input type="radio" name="q4" value="1" id="q4a1"> <label for="q4a1" style="display: inline;">Pequeña pero cercana</label><br>
+                                <input type="radio" name="q4" value="2" id="q4a2"> <label for="q4a2" style="display: inline;">Diversa en mi campo</label><br>
+                                <input type="radio" name="q4" value="3" id="q4a3"> <label for="q4a3" style="display: inline;">Amplia y multidisciplinaria</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>5. ¿Qué haces con ideas nuevas?</label>
+                            <div>
+                                <input type="radio" name="q5" value="1" id="q5a1"> <label for="q5a1" style="display: inline;">Las comento con amigos</label><br>
+                                <input type="radio" name="q5" value="2" id="q5a2"> <label for="q5a2" style="display: inline;">Las investigo más a fondo</label><br>
+                                <input type="radio" name="q5" value="3" id="q5a3"> <label for="q5a3" style="display: inline;">Las desarrollo y pruebo</label>
+                            </div>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <button type="button" onclick="calculateResult()">Ver resultados</button>
+                        </div>
+                    </form>
+                    
+                    <div id="quizResult" class="result">
+                        <h3>Tu perfil emprendedor es: <span id="profileType"></span></h3>
+                        <p id="profileDescription"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>© 2025 Exploradores Globales - Medellín</p>
+            <p>Trabajo realizado para el Ministerio de Tecnologías de la Información y Comunicaciones de Colombia</p>
+            <p>Docente: Juan Carlos López Henao</p>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Gráfico de Barras: Emprendimiento por sector
+        const barCtx = document.getElementById('barChart').getContext('2d');
+        const barChart = new Chart(barCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Tecnología', 'Turismo', 'Gastronomía', 'Moda', 'Servicios', 'Educación'],
+                datasets: [{
+                    label: 'Número de emprendimientos',
+                    data: [320, 180, 240, 150, 280, 120],
+                    backgroundColor: [
+                        'rgba(54, 162, 235, 0.7)',
+                        'rgba(255, 99, 132, 0.7)',
+                        'rgba(255, 206, 86, 0.7)',
+                        'rgba(75, 192, 192, 0.7)',
+                        'rgba(153, 102, 255, 0.7)',
+                        'rgba(255, 159, 64, 0.7)'
+                    ],
+                    borderColor: [
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+        
+        // Gráfico de Torta: Participación por género
+        const pieCtx = document.getElementById('pieChart').getContext('2d');
+        const pieChart = new Chart(pieCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Mujeres (52%)', 'Hombres (46%)', 'Otros (2%)'],
+                datasets: [{
+                    data: [52, 46, 2],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.7)',
+                        'rgba(54, 162, 235, 0.7)',
+                        'rgba(255, 206, 86, 0.7)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true
+            }
+        });
+        
+        // Gráfico de Líneas: Tendencia de innovación
+        const lineCtx = document.getElementById('lineChart').getContext('2d');
+        const lineChart = new Chart(lineCtx, {
+            type: 'line',
+            data: {
+                labels: ['2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
+                datasets: [{
+                    label: 'Startups registradas',
+                    data: [120, 150, 180, 220, 280, 310, 380, 450, 520, 600],
+                    fill: false,
+                    backgroundColor: 'rgba(75, 192, 192, 0.7)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+        
+        // Gráfico de Área: Emprendimientos sociales vs tradicionales
+        const areaCtx = document.getElementById('areaChart').getContext('2d');
+        const areaChart = new Chart(areaCtx, {
+            type: 'line',
+            data: {
+                labels: ['2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
+                datasets: [
+                    {
+                        label: 'Tradicionales',
+                        data: [400, 420, 450, 480, 500, 480, 520, 550, 580, 600],
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        fill: true,
+                        tension: 0.1
+                    },
+                    {
+                        label: 'Sociales',
+                        data: [50, 60, 70, 90, 120, 180, 250, 320, 400, 500],
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        fill: true,
+                        tension: 0.1
+                    }
+                ]
+            },
+            options: {
+                responsive: true
+            }
+        });
+        
+        // Función para calcular resultados del quiz
+        function calculateResult() {
+            const form = document.getElementById('entrepreneurQuiz');
+            const inputs = form.querySelectorAll('input[type="radio"]:checked');
+            
+            if (inputs.length < 5) {
+                alert('Por favor responde todas las preguntas');
+                return;
+            }
+            
+            let score = 0;
+            inputs.forEach(input => {
+                score += parseInt(input.value);
+            });
+            
+            const resultDiv = document.getElementById('quizResult');
+            const profileType = document.getElementById('profileType');
+            const profileDesc = document.getElementById('profileDescription');
+            
+            resultDiv.style.display = 'block';
+            
+            if (score <= 8) {
+                resultDiv.style.backgroundColor = 'rgba(108, 117, 125, 0.2)';
+                profileType.textContent = 'Explorador';
+                profileDesc.textContent = 'Tienes una mentalidad más cautelosa y prefieres la estabilidad. Sin embargo, reconoces oportunidades y estás abierto a aprender. Con más exposición al ecosistema emprendedor y desarrollo de habilidades, podrías dar el salto.';
+            } else if (score <= 12) {
+                resultDiv.style.backgroundColor = 'rgba(13, 110, 253, 0.2)';
+                profileType.textContent = 'Innovador';
+                profileDesc.textContent = 'Tienes una buena combinación de pensamiento creativo y pragmatismo. Eres capaz de identificar problemas y buscar soluciones, aunque aún puedes trabajar en tu tolerancia al riesgo y pensamiento a gran escala.';
+            } else {
+                resultDiv.style.backgroundColor = 'rgba(25, 135, 84, 0.2)';
+                profileType.textContent = 'Visionario';
+                profileDesc.textContent = 'Tienes un fuerte espíritu emprendedor, con alta tolerancia al riesgo y capacidad para ver oportunidades donde otros ven problemas. Tu desafío es enfocar esa energía y convertir ideas en proyectos sostenibles.';
+            }
+            
+            // Desplazarse al resultado
+            resultDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Smooth scrolling para los enlaces del menú
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 70,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
